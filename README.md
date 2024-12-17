@@ -23,7 +23,7 @@ A FastAPI server for handling CSV uploads and logging operations.
 
 ## Project Structure
 ```
-Your_Project_Dir/
+Fast-API-Server-FrontEnd/
 ├── app/
 │ ├── init.py
 │ ├── routers/
@@ -31,6 +31,10 @@ Your_Project_Dir/
 │ │ ├── csv_handler.py
 │ │ └── logging_handler.py
 ├── static/
+│ ├── js/
+│ │ └── main.js
+│ ├── css/
+│ │ └── style.css
 │ └── index.html
 ├── main.py
 ├── requirements.txt

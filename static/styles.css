@@ -1,0 +1,197 @@
+/* Basic styling for the body */
+body {
+    font-family: Arial, sans-serif; /* Font style for the entire page */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background: #f0f0f0; /* Light grey background color */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Header styling */
+header {
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space items evenly */
+    background-color: #4CAF50; /* Green background color */
+    padding: 10px; /* Padding around header content */
+    color: white; /* White text color */
+    border-bottom: 5px solid #388E3C; /* Darker green bottom border */
+    position: relative; /* Position relative for inner elements */
+    align-items: center;
+}
+
+/* Logo styling */
+#logos img {
+    height: 70px;
+    width: 70px;
+}
+
+/* Main heading styling */
+h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2em; /* Larger font size */
+}
+
+/* Main content area styling */
+main {
+    display: flex; /* Flexbox for layout */
+    flex-grow: 1; /* Allow main to grow and fill available space */
+    padding: 10px; /* Padding around main content */
+    gap: 10px; /* Space between child elements */
+}
+
+/* Styling for the left section */
+.left-section {
+    overflow-y: auto;
+    width: 20%; /* Fixed width for the left section */
+    background: white; /* White background color */
+    padding: 20px; /* Padding inside the section */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 10px; /* Rounded corners */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+}
+
+hr {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+/* Basic styling for the file button list */
+#file-list {
+    margin-top: 20px;
+    overflow-y: auto;
+}
+
+#file-list h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    overflow-y: auto;
+}
+
+/* Styling for the file buttons */
+.file-button {
+    display: inline-block; /* Inline-block for spacing */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    margin-bottom: 10px; /* Space between buttons */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+/* Hover effects for the buttons */
+.file-button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight upward movement */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Ensure right-section has flexbox layout for internal content */
+.right-section {
+    width: 75%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+}
+
+/* Additional styles for the right section content */
+.right-section h2 {
+    margin-top: 0;
+}
+
+.right-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.horizontal-containers {
+    display: flex; /* Set to flex for horizontal layout */
+    gap: 10px; /* Space between containers */
+    width: 100%; /* Full width of the right section */
+    margin-top: 20px; /* Space above the containers */
+}
+
+.container {
+    background: #f9f9f9;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Allow containers to grow equally */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    height: 100%;
+}
+
+
+.semi-circle-meter {
+    position: relative;
+    width: 100px;  /* Width of the semi-circle meter */
+    height: 50px; /* Height of the semi-circle */
+    background: #ddd;
+    border-radius: 100px 100px 0 0; /* Make it a semi-circle */
+    overflow: hidden; /* Hide the overflow */
+    margin-top: 10px;
+}
+
+.semi-circle-meter::before {
+    content: "";
+    position: absolute;
+    width: 200px; /* Diameter for the full semi-circle */
+    height: 100px; /* Full height for the semi-circle */
+    background: #4CAF50; /* Color of the filled part */
+    border-radius: 100px; /* Make it a full circle */
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Align to the left */
+    transform-origin: center; /* Set origin for rotation */
+    transform: rotate(calc(var(--value) * 1deg)); /* Rotate based on the value */
+}
+
+canvas {
+    width: 800px; /* Set to match 16:9 aspect ratio */
+    height: 350px; /* Set to match 16:9 aspect ratio */
+    margin-bottom: 20px;
+    max-width: 100%; /* Responsive */
+    border: 1px solid #ddd; /* Optional border for better visibility */
+}
+
+/* Styling for event input field */
+.event-occ input {
+    height: 35px;
+    width: 95%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+}
+
+/* Styling for event button */
+.event-occ button {
+    margin-top: 10px;
+    height: 39px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+}
+
+/* Styling for event button on hover */
+.event-occ button:hover {
+    background-color: #388E3C;
+}
+
+/* Styling for event section */
+.event {
+    display: flex;
+}

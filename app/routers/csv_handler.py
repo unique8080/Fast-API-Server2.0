@@ -1,23 +1,34 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File
-from fastapi.responses import JSONResponse
-import os
+
+#csv_handler.py
+from fastapi import APIRouter, HTTPException, File, UploadFile
+from typing import List
 import pandas as pd
-import time
-from io import StringIO
+import os
 
 router = APIRouter()
 
-@router.post("/upload", status_code=201)
-async def upload_csv(file: UploadFile = File(...)):
-    try:
-        content = await file.read()
-        df = pd.read_csv(StringIO(content.decode('utf-8')))
-        os.makedirs('files', exist_ok=True)
-        timestamp_str = time.strftime("%Y-%m-%d_%H-%M-%S")
-        file_path = f"files/{timestamp_str}.csv"
-        df.to_csv(file_path, index=False)
-        return JSONResponse(content={"message": f"CSV file saved to {file_path}"}, status_code=200)
-    except pd.errors.EmptyDataError:
-        raise HTTPException(status_code=422, detail="The uploaded CSV file is empty")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+READINGS_DIR = "static/readings"
+
+if not os.path.exists(READINGS_DIR):
+    os.makedirs(READINGS_DIR)
+
+@router.get("/", response_model=List[str])
+async def list_files():
+    files = os.listdir(READINGS_DIR)
+    return files
+
+@router.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    file_path = os.path.join(READINGS_DIR, file.filename)
+    with open(file_path, "wb") as f:
+        f.write(await file.read())
+    return {"filename": file.filename}
+
+@router.get("/{filename}")
+async def read_file(filename: str):
+    file_path = os.path.join(READINGS_DIR, filename)
+    if not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail="File not found")
+    df = pd.read_csv(file_path)
+    return df.to_dict(orient="records")
+

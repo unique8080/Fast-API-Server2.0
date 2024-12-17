@@ -1,7 +1,9 @@
 from fastapi import APIRouter
-from . import csv_handler, logging_handler
+from .csv_handler import router as csv_router
+from .logging_handler import router as logging_router
 
 router = APIRouter()
 
-router.include_router(csv_handler.router)
-router.include_router(logging_handler.router)
+# Include routers without prefix to avoid empty path issues
+router.include_router(csv_router, prefix="/files")
+router.include_router(logging_router, prefix="/logs")

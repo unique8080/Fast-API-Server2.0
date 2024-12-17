@@ -1,13 +1,66 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Server</title>
+    <title>Wilo Interface</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="/static/scripts.js"></script>
+    
 </head>
 <body>
-    <h1>Welcome to Server !!</h1>
+    <header>
+        <div id="logos">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjyuxRqlHxXty6y5Ts27atHdYD49RZKy5TkA&s" alt="Logo 1">
+        </div>
+        <h2 class="header-title">DASHBOARD</h2>
+        <div id="logos">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPARdxz2ZuSZkFaDiKWEqBu4UdWuaDZn2Lbg&s" alt="Logo 2">
+        </div>
+    </header>
+
+    <main>
+        <div class="left-section">
+            <div class="event">
+                <div class="event-occ">
+                    <form action="/create_folder/" method="post">
+                        <input type="text" id="name" name="name" placeholder="Enter Event Name" required>
+                        <button type="submit">Create Event</button>
+                    </form>
+                    <hr>
+                    <div class="readings-section">
+                        <h3>CSV Files</h3>
+                        <div id="file-list">
+                            <!-- File buttons will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <canvas id="graph" width="800" height="350"></canvas> <!-- Canvas for the graph -->
+            <div class="horizontal-containers">
+                <div class="container">
+                    <h4>Average Acceleration</h4>
+                    <h3 id="average-number">0</h3> <!-- Display for average acceleration -->
+                </div>
+                <div class="container">
+                    <h4>Average Slope</h4>
+                    <h3 id="average-slope">0</h3> <!-- Display for average slope -->
+                </div>
+                <div class="container">
+                    <h4>New CSV Files</h4>
+                    <h3 id="csv-file-count">0</h3> <!-- Display for new CSV files -->
+                </div>
+                <div class="container">
+                    <h4>Latest Event</h4>
+                    <h3 id="latest-event-display">Loading...</h3> <!-- Display for the latest event -->
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
